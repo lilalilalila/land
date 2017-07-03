@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+//整体背景
+@mixin body-bgcolor {
+    background-color: #eff0f4;
+}
+
+
+//设置背景颜色以及宽距
+@mixin bg-color {
+    width: 100%;
+    color: #FFFFFF;
+    background-color: #5FC0CD;
+}
+
+body {
+    @include body-bgcolor;
+}
+
+//去掉a标签的下划线
+a {
+    text-decoration: none;
+}
+
+$font-size: 0.9rem;
+$width: 100%;
+
+//清除浮动
+@mixin clear {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.header-content {
+    & {
+        line-height: 2rem;
+        text-align: center;
+        font-size: $font-size;
+    }
+    
+    a {
+        margin: 0 15px;
+        
+        line-height: 2rem;
+        
+        color: #FFFFFF;
+    }
+    
+    h4 {
+        display: inline-block;
+        
+        margin-top: 2px;
+        
+        line-height: 2rem;
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+    
+    .left {
+        float: left;
+    }
+    
+    .right {
+        float: right;
+    }
+    
+    &:after {
+        @include clear;
+    }
+    
+    @include bg-color;
+}
+
+//背景图片
+@mixin bg-image {
+    background-repeat: no-repeat;
+    background-size: 16px 23px;
+    background-position: 15px center;
+}
+
+//取消边框
+@mixin noborder {
+    border: none;
+}
+
+@mixin left-border {
+    border-left: 1px solid #e5e8ea;
+}
+
+//溢出
+@mixin overflow {
+    overflow: hidden;
+}
+
+//内边距
+@mixin padding($p-top,$p-right,$p-bottom,$p-left) {
+    padding-top: $p-top;
+    padding-right: $p-right;
+    padding-bottom: $p-bottom;
+    padding-left: $p-left;
+}
+
+//外边距
+@mixin margin($t,$r,$b,$l) {
+    margin-top: $t;
+    margin-right: $r;
+    margin-bottom: $b;
+    margin-left: $l; 
+}
+
+$hui: #e5e8ea;
+$white: #ffffff;
+$iphone-tu: url('../img/images/i03.png');
+
+form {
+    @include overflow;
+    
+    > div {
+        width: $width;
+       
+        background-color: $white;
+        @include padding(
+            $p-top: 17px,
+            $p-bottom: 17px,
+            $p-left: 46px,
+            $p-right: 0);
+        @include margin(
+            $t: 20px,
+            $b: 20px,
+            $r: 0,
+            $l: 0);
+        @include clear;
+    }
+    
+    input {
+        display: block;
+        
+        padding-left: 15px;
+        width: 70%;
+        
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        
+        color: $hui;
+        background-color: $white;
+        
+        @extend .right;
+        @include noborder;
+        @include left-border;
+    }
+    
+    .iphone {
+        background-image: $iphone-tu;
+        @include bg-image;
+    }
+    
+    .password {
+        background-image: url(../img/images/i06.png);
+        @include bg-image;
+    }
+}
+
+
+.footer-content {
+    button {
+        width: $width;
+        line-height: 3.5rem;
+        font-size: 1.1rem;
+        letter-spacing: 1rem;
+        padding-left: 1.9rem;
+        margin-top: 50px;
+        
+        @include bg-color;
+        @include noborder;
+    }
+    
+    a {
+        float: right;
+        color: #5FC0CD;
+        @include margin(
+            $t:5px,
+            $r: 15px,
+            $b: 0,
+            $l: 0);
+    }
+}
